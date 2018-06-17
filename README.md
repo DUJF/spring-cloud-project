@@ -21,4 +21,4 @@
 ```` 
 . 配置文件放在git仓库里[配置文件](https://github.com/DUJF/spring-cloud-config)
 ----
-未完待续，后续添加服务配置中心等
+未完待续，后续添加负载均衡等
