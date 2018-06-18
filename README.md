@@ -2,7 +2,11 @@
  spring cloud项目实践
 ### 1. 首先建立一个服务注册中心 [服务注册中心](https://github.com/DUJF/spring-cloud-4/tree/master/spring-cloud-eureka)
 ### 2. 创建多个服务提供者（本实例中的client，client2)
+服务资源微服务[clinet](https://github.com/DUJF/spring-cloud-4/tree/master/spring-cloud-config-client)
+认证微服务[client2](https://github.com/DUJF/spring-cloud-4/tree/master/spring-cloud-config-client2)
 ### 3. 创建zuul网关[网关源码](https://github.com/DUJF/spring-cloud-4/tree/master/spring-cloud-zuul)
+访问权限认证中心[client2](https://github.com/DUJF/spring-cloud-4/tree/master/spring-cloud-eureka-client2)
+获取token http://localhost:8013/api-b/login?username=a&password=123456 (Post) 会经过zuul处理后，访问到client2的login接口
 ### 4. 服务配置中心
 . [配置服务端](https://github.com/DUJF/spring-cloud-4/tree/master/spring-cloud-config)
 服务端搭建好后可以访问http://localhost:8014/config/client 获取到config-client.properties中的信息
@@ -21,4 +25,6 @@
 ```` 
 . 配置文件放在git仓库里[配置文件](https://github.com/DUJF/spring-cloud-config)
 ----
+### 5. spring boot admin 项目监控中心
+
 未完待续，后续添加负载均衡等
