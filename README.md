@@ -7,6 +7,47 @@
 ### 3. 创建zuul网关[网关源码](https://github.com/DUJF/spring-cloud-4/tree/master/spring-cloud-zuul)
 访问权限认证中心[client2](https://github.com/DUJF/spring-cloud-4/tree/master/spring-cloud-eureka-client2)
 获取token http://localhost:8013/api-b/login?username=a&password=123456 (Post) 会经过zuul处理后，访问到client2的login接口
+----
+使用swagger 生成统一的接口管理文档
+再提供服务的微服务中添加
+````xml
+<!--Swagger 构建的API文档汇集工具-->
+        <dependency>
+            <groupId>com.spring4all</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
+            <version>1.7.0.RELEASE</version>
+        </dependency>
+````
+````properties
+###需要扫描的包#########
+#############swagger api构建工具########
+swagger.base-package=com.github
+````
+添加注解@EnableSwagger2Doc
+在zuul添加配置
+````java
+@Component
+    @Primary
+    class DocumentationConfig implements SwaggerResourcesProvider {
+        @Override
+        public List<SwaggerResource> get() {
+            List resources = new ArrayList<>();
+            //location   name :api-a 是文档名称 /api-a是添加的路由配置
+            resources.add(swaggerResource("api-a", "/api-a/v2/api-docs", "1.0"));
+            resources.add(swaggerResource("api-b", "/api-b/v2/api-docs", "1.0"));
+            return resources;
+        }
+
+        private SwaggerResource swaggerResource(String name, String location, String version) {
+            SwaggerResource swaggerResource = new SwaggerResource();
+            swaggerResource.setName(name);
+            swaggerResource.setLocation(location);
+            swaggerResource.setSwaggerVersion(version);
+            return swaggerResource;
+        }
+    }
+````
+
 ### 4. 服务配置中心
 . [配置服务端](https://github.com/DUJF/spring-cloud-4/tree/master/spring-cloud-config)
 服务端搭建好后可以访问http://localhost:8014/config/client 获取到config-client.properties中的信息
