@@ -53,6 +53,12 @@
             <artifactId>spring-cloud-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!--需要监控的服务-->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>1.4.5</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>

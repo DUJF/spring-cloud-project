@@ -43,6 +43,7 @@
         <module>spring-cloud-eureka-client2</module>
         <module>spring-cloud-config</module>
         <module>spring-cloud-config-client</module>
+        <module>spring-boot-admin</module>
     </modules>
 
     <build>
