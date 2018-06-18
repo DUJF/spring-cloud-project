@@ -26,5 +26,15 @@
 . 配置文件放在git仓库里[配置文件](https://github.com/DUJF/spring-cloud-config)
 ----
 ### 5. spring boot admin 项目监控中心
+1. 添加监控中心需要注册在同一个服务注册中心或者在需要监控的微服务配置文件中添加
+````properties
+# 如果被监控的服务没有注册到服务中心，需要增加admin的地址
+ spring.boot.admin.url=http://localhost:8016
+# 关闭安全访问,admin 能直接获取相关信息，否则不能直接获取
+management.security.enabled=false
+````
+关闭安全访问，可以直接获取到微服务相关数据
+
+
 
 未完待续，后续添加负载均衡等
