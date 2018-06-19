@@ -69,6 +69,8 @@ public class MyFilter extends ZuulFilter {
         Object token = request.getHeader("token");
         if (token == null || token.equals("null")) {
             token = null;
+            //测试需要正常不用返回
+            return null;
         }
 
         boolean flag = false;

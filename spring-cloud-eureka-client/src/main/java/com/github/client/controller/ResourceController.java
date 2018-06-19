@@ -1,5 +1,6 @@
 package com.github.client.controller;
 
+import com.github.client.config.ServiceInfoUtil;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +12,7 @@ public class ResourceController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "hello world";
+        System.out.printf("hello world:" + ServiceInfoUtil.getPort());
+        return "hello world:" + ServiceInfoUtil.getPort();
     }
 }
