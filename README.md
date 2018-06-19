@@ -75,7 +75,42 @@ swagger.base-package=com.github
 management.security.enabled=false
 ````
 关闭安全访问，可以直接获取到微服务相关数据
+### 6. spring cloud ribbon 负载均衡 和 hystrix 容错保护
+````java
+/**
+     * 注册一个具有容错功能的RestTemplate
+     * LoadBalanced开启负载均衡客户端
+     *
+     * @return
+     */
+    @LoadBalanced
+    @Bean
+    RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+````
+service层处理
+````java
+@Service
+public class HelloServiceImpl implements HelloService {
 
+    @Autowired
+    RestTemplate restTemplate;
+
+    //注解指定发生错误时的回调方法
+    @HystrixCommand(fallbackMethod = "helloFallBack")
+    public String getHello() {
+        //Get请求调用服务，restTemplate被@LoadBalanced注解标记，Get方法会自动进行负载均衡
+        //直接通过注册到服务注册中心的实例id 访问就行
+        String result = restTemplate.getForObject("http://service-eureka-client/hello", String.class);
+        return result;
+    }
+    //发生错误时调用 同上面指定的一致
+    public String helloFallBack() {
+        return "Error occurred ！";
+    }
+}
+````
 
 
 未完待续，后续添加负载均衡等
