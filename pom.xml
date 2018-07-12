@@ -45,6 +45,7 @@
         <module>spring-cloud-config-client</module>
         <module>spring-boot-admin</module>
         <module>spring-cloud-ribbon</module>
+        <module>spring-cloud-consul</module>
     </modules>
 
     <build>

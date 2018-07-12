@@ -65,6 +65,12 @@
             <artifactId>spring-boot-admin-starter-client</artifactId>
             <version>1.4.5</version>
         </dependency>
+
+        <!--FeignClient调用Eureka Client接口-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

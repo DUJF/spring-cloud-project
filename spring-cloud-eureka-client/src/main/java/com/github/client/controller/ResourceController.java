@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ResourceController {
 
-    @GetMapping("/hello")
-    public String hello() {
-        System.out.printf("hello world:" + ServiceInfoUtil.getPort());
-        return "hello world:" + ServiceInfoUtil.getPort();
-    }
+  @GetMapping("/hello")
+  public String hello() {
+    System.out.println("hello world:" + ServiceInfoUtil.getPort());
+    return "hello world1:" + ServiceInfoUtil.getPort();
+  }
 }
