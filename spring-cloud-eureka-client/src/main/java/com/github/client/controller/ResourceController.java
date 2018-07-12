@@ -1,6 +1,6 @@
 package com.github.client.controller;
 
-import com.github.client.config.ServiceInfoUtil;
+import com.github.client.util.ServiceInfoUtil;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
