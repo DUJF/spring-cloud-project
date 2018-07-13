@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ResourceController {
 
+  //测试重命名仓库
   @GetMapping("/hello")
   public String hello() {
     System.out.println("hello world:" + ServiceInfoUtil.getPort());
