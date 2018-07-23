@@ -1,4 +1,4 @@
-package com.github.client.config;
+package com.github.client.util;
 
 import org.springframework.boot.context.embedded.EmbeddedServletContainerInitializedEvent;
 import org.springframework.context.ApplicationListener;

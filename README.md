@@ -111,6 +111,30 @@ public class HelloServiceImpl implements HelloService {
     }
 }
 ````
+### 7. 通过feign调用其他client接口
+```xml
+<!--FeignClient调用Eureka Client接口-->
+        <dependency>
+           <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+        </dependency>
+```
+要调用的一端添加接口：
+```java
+@FeignClient("SERVICE-EUREKA-CLIENT") public interface Client1Client {
+  @RequestMapping(value = "/hello", method = RequestMethod.GET, produces = { "application/json;charset=UTF-8" })
+  String getHello();
+}
+```
+```java
+//注入调用
+ 	@Autowired
+  private Client1Client client1Client;
+
+  @Override public String getHello() {
+    return client1Client.getHello();
+  }
+```
 
 
 未完待续......
