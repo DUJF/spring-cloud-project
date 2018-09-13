@@ -19,85 +19,85 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class MyFilter extends ZuulFilter {
 
-    private Logger log = LoggerFactory.getLogger(MyFilter.class);
+  private Logger log = LoggerFactory.getLogger(MyFilter.class);
 
 
-    @Autowired
-    private FilterConfig filterConfig;
+  @Autowired
+  private FilterConfig filterConfig;
 
-    /**
-     * filterType：返回一个字符串代表过滤器的类型，在zuul中定义了四种不同生命周期的过滤器类型，具体如下：
-     * pre：路由之前
-     * routing：路由之时
-     * post： 路由之后
-     * error：发送错误调用
-     * <p>
-     * filterOrder：过滤的顺序
-     * shouldFilter：这里可以写逻辑判断，是否要过滤，本文true,永远过滤。
-     * run：过滤器的具体逻辑。可用很复杂，包括查sql，nosql去判断该请求到底有没有权限访问。
-     *
-     * @return
-     */
-    @Override
-    public String filterType() {
-        return "pre";
+  /**
+   * filterType：返回一个字符串代表过滤器的类型，在zuul中定义了四种不同生命周期的过滤器类型，具体如下：
+   * pre：路由之前
+   * routing：路由之时
+   * post： 路由之后
+   * error：发送错误调用
+   * <p>
+   * filterOrder：过滤的顺序
+   * shouldFilter：这里可以写逻辑判断，是否要过滤，本文true,永远过滤。
+   * run：过滤器的具体逻辑。可用很复杂，包括查sql，nosql去判断该请求到底有没有权限访问。
+   *
+   * @return
+   */
+  @Override
+  public String filterType() {
+    return "pre";
+  }
+
+  @Override
+  public int filterOrder() {
+    return 0;
+  }
+
+  /**
+   * shouldFilter：这里可以写逻辑判断，是否要过滤，本文true,永远过滤。
+   *
+   * @return
+   */
+  @Override
+  public boolean shouldFilter() {
+    return true;
+  }
+
+  @Override
+  public Object run() {
+    String ignoresParam = filterConfig.getIgnores();
+    String[] ignoreArray = ignoresParam.split(",");
+    RequestContext ctx = RequestContext.getCurrentContext();
+    HttpServletRequest request = ctx.getRequest();
+    HttpServletResponse response = ctx.getResponse();
+    log.info("==========" + String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
+    Object token = request.getHeader("token");
+    if (token == null || token.equals("null")) {
+      token = null;
+      //测试需要正常不用返回
+      return null;
     }
 
-    @Override
-    public int filterOrder() {
-        return 0;
+    boolean flag = false;
+
+    for (int i = 0; i < ignoreArray.length; i++) {
+      System.out.println(request.getRequestURL().toString() + "|" + ignoreArray[i]);
+      if (request.getRequestURL().toString().contains(ignoreArray[i])) {
+        flag = true;
+      }
     }
-
-    /**
-     * shouldFilter：这里可以写逻辑判断，是否要过滤，本文true,永远过滤。
-     *
-     * @return
-     */
-    @Override
-    public boolean shouldFilter() {
-        return true;
-    }
-
-    @Override
-    public Object run() {
-        String ignoresParam = filterConfig.getIgnores();
-        String[] ignoreArray = ignoresParam.split(",");
-        RequestContext ctx = RequestContext.getCurrentContext();
-        HttpServletRequest request = ctx.getRequest();
-        HttpServletResponse response = ctx.getResponse();
-        log.info("==========" + String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
-        Object token = request.getHeader("token");
-        if (token == null || token.equals("null")) {
-            token = null;
-            //测试需要正常不用返回
-            return null;
-        }
-
-        boolean flag = false;
-
-        for (int i = 0; i < ignoreArray.length; i++) {
-            System.out.println(request.getRequestURL().toString() + "|" + ignoreArray[i]);
-            if (request.getRequestURL().toString().contains(ignoreArray[i])) {
-                flag = true;
-            }
-        }
 
 
 //        if(!request.getRequestURL().toString().contains("addUser")&&!request.getRequestURL().toString().contains("login")&&
 //        		!request.getRequestURL().toString().contains("logout")&&token == null) {
 
 
-        if (!flag && token == null) {
+    if (!flag && token == null) {
 
-            log.info("token is empty");
-            ctx.setSendZuulResponse(false);
-            ctx.setResponseStatusCode(401);
-            ctx.setResponseBody("token is empty");
-            return null;
+      log.info("token is empty");
+      ctx.setSendZuulResponse(false);
+      ctx.setResponseStatusCode(401);
+      ctx.setResponseBody("token is empty");
+      return null;
 
-        } else if (!flag && token != null) {
+    } else if (!flag && token != null) {
 
-            try {
+      try {
 //                JwtUtils.verify(token);
 
 //                if(!respBody.getMsg().equals("success")){
@@ -108,15 +108,15 @@ public class MyFilter extends ZuulFilter {
 //                    ctx.setResponseBody(respBody.getMsg());
 //
 //                }
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+      } catch (Exception e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
 
 //            log.info("chekcToken==="+respBody.getMsg());
 
-        }
-        log.info("access token ok");
-        return null;
     }
+    log.info("access token ok");
+    return null;
+  }
 }

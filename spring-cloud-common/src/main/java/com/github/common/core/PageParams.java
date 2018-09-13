@@ -1,28 +1,28 @@
 package com.github.common.core;
 
 public class PageParams {
-    /**
-     * 当前页:默认值1
-     */
-    private int currentPage = 1;
-    /**
-     * 每页条数:默认值10
-     */
-    private int pageSize = 10;
+  /**
+   * 当前页:默认值1
+   */
+  private int currentPage = 1;
+  /**
+   * 每页条数:默认值10
+   */
+  private int pageSize = 10;
 
-    public int getCurrentPage() {
-        return currentPage;
-    }
+  public int getCurrentPage() {
+    return currentPage;
+  }
 
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
-    }
+  public void setCurrentPage(int currentPage) {
+    this.currentPage = currentPage;
+  }
 
-    public int getPageSize() {
-        return pageSize;
-    }
+  public int getPageSize() {
+    return pageSize;
+  }
 
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
+  public void setPageSize(int pageSize) {
+    this.pageSize = pageSize;
+  }
 }

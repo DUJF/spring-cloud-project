@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ConfigClientApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ConfigClientApplication.class, args);
-        String line = "============================================";
-        System.out.println(line + "\n http://localhost:" + ServiceInfoUtil.getPort() + " \n" + line);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(ConfigClientApplication.class, args);
+    String line = "============================================";
+    System.out.println(line + "\n http://localhost:" + ServiceInfoUtil.getPort() + " \n" + line);
+  }
 
-    @Value("${name}")
-    private String name;
+  @Value("${name}")
+  private String name;
 
-    @GetMapping("/name")
-    public String getName() {
-        return name;
-    }
+  @GetMapping("/name")
+  public String getName() {
+    return name;
+  }
 }
