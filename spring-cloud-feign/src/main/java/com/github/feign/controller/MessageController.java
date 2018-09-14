@@ -32,4 +32,9 @@ public class MessageController {
   public String getHello() {
     return helloClient.getHello("name");
   }
+
+  @GetMapping("/client2/hello")
+  public String getHelloClient2() {
+    return helloClient.getHello("name");
+  }
 }

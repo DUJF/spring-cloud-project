@@ -10,6 +10,7 @@ import com.github.common.util.ResultUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @author dellll
@@ -73,15 +75,22 @@ public class UserController {
   }
 
 
-  /**
-   * 登录，根据用户密码 生成token。
-   *
-   * @return
-   */
   @RequestMapping(value = "/hello", method = RequestMethod.POST)
   public RespBody getHello() {
     return ResultUtils.success(userservice.getHello());
   }
 
+  @Autowired
+  private RestTemplate restTemplate;
+
+  @RequestMapping(value = "/zipkin", method = RequestMethod.GET)
+  public RespBody getZipkin() {
+    return ResultUtils.success(restTemplate.getForObject("http://localhost:8011/hello", String.class));
+  }
+
+  @Bean
+  public RestTemplate getRestTemplate(){
+    return new RestTemplate();
+  }
 
 }

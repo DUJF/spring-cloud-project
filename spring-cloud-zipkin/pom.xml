@@ -4,14 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github</groupId>
-    <artifactId>spring-cloud-eureka-client2</artifactId>
+    <groupId>com.github.zipkin</groupId>
+    <artifactId>spring-cloud-zipkin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>client2</name>
-    <description>token-server</description>
-
+    <name>zipkin</name>
+    <description>spring-cloud-zipkin</description>
 
     <parent>
         <groupId>com.github</groupId>
@@ -31,70 +30,33 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
-        <!-- sping cloud 注册服务 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--zipkin-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-server</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github</groupId>
-            <artifactId>spring-cloud-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <!--redis-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-autoconfigure-ui</artifactId>
         </dependency>
 
-        <!--需要监控的服务-->
+        <!--监控的服务-->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
             <version>1.4.5</version>
         </dependency>
-
-        <!--FeignClient调用Eureka Client接口-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-feign</artifactId>
-        </dependency>
-
-        <!--rabbitmq-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-        <!--sleuth-zipkin-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
-        </dependency>
     </dependencies>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Dalston.RELEASE</version>
+                <version>Camden.SR6</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
