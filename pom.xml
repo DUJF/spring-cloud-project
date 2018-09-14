@@ -28,6 +28,7 @@
         <module>spring-cloud-ribbon</module>
         <module>spring-cloud-consul</module>
         <module>spring-cloud-feign</module>
+        <module>spring-cloud-zipkin</module>
     </modules>
 
     <build>
