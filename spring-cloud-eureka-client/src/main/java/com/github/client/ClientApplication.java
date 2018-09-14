@@ -12,10 +12,10 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 @SpringBootApplication
 public class ClientApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ClientApplication.class, args);
-        String line = "============================================";
-        System.out.println(line + "\n http://localhost:8011 \n" + line);
+  public static void main(String[] args) {
+    SpringApplication.run(ClientApplication.class, args);
+    String line = "============================================";
+    System.out.println(line + "\n http://localhost:8011 \n" + line);
 
-    }
+  }
 }

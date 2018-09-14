@@ -11,9 +11,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 public class ConfigApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ConfigApplication.class, args);
-		String line = "============================================";
-		System.out.println(line + "\n http://localhost:8014 \n" + line);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(ConfigApplication.class, args);
+    String line = "============================================";
+    System.out.println(line + "\n http://localhost:8014 \n" + line);
+  }
 }

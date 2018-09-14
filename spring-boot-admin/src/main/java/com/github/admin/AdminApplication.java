@@ -15,9 +15,9 @@ import org.springframework.context.annotation.Configuration;
 @EnableAdminServer
 public class AdminApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(AdminApplication.class, args);
-        String line = "============================================";
-        System.out.println(line + "\n http://localhost:8016 \n" + line);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(AdminApplication.class, args);
+    String line = "============================================";
+    System.out.println(line + "\n http://localhost:8016 \n" + line);
+  }
 }

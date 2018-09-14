@@ -12,14 +12,14 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "filter")
 public class FilterConfig {
 
-    private String ignores;
+  private String ignores;
 
-    public String getIgnores() {
-        return ignores;
-    }
+  public String getIgnores() {
+    return ignores;
+  }
 
-    public void setIgnores(String ignores) {
-        this.ignores = ignores;
+  public void setIgnores(String ignores) {
+    this.ignores = ignores;
 
-    }
+  }
 }

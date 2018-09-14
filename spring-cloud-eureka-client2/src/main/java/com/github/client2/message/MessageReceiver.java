@@ -2,8 +2,7 @@ package com.github.client2.message;
 
 import com.github.common.core.RabbitMqConstants;
 import com.github.common.model.Message;
-import java.io.ByteArrayInputStream;
-import java.io.ObjectInputStream;
+import net.sf.json.JSONObject;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -18,9 +17,9 @@ public class MessageReceiver {
 
   @RabbitHandler
   @RabbitListener(queues = RabbitMqConstants.TOPIC_QUEUE1)
-  public void process(byte[] bytes) {
+  public void process(String m) {
     try {
-      Message message = (Message) getObjectFromBytes(bytes);
+      Message message = stringToMessage(m);
       System.out.println("Receiver  : " + message.toString());
     } catch (Exception e) {
       e.printStackTrace();
@@ -29,22 +28,18 @@ public class MessageReceiver {
 
   @RabbitHandler
   @RabbitListener(queues = RabbitMqConstants.TOPIC_QUEUE2)
-  public void process1(byte[] bytes) {
+  public void process1(String m) {
     try {
-      Message message = (Message) getObjectFromBytes(bytes);
+      Message message = stringToMessage(m);
       System.out.println("Receiver  : " + message.toString());
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
 
-  //字节码转化为对象
-  private Object getObjectFromBytes(byte[] objBytes) throws Exception {
-    if (objBytes == null || objBytes.length == 0) {
-      return null;
-    }
-    ByteArrayInputStream bi = new ByteArrayInputStream(objBytes);
-    ObjectInputStream oi = new ObjectInputStream(bi);
-    return oi.readObject();
+  private Message stringToMessage(String s) {
+    JSONObject jsonObject = JSONObject.fromObject(s);
+    return (Message) JSONObject.toBean(jsonObject, Message.class);
+
   }
 }

@@ -17,26 +17,26 @@ public class SystemLogsAop {
 //    @Resource
 //    private SysLogsMapper sysLogsMapper;
 
-    /**
-     * <p>Discription:[后置通知，扫描com.xiaojukeji包及此包下的所有带有SystemLogAnnotation注解的方法]</p>
-     *
-     * @param joinPoint 前置参数
-     */
-    @After(("execution(* com.github..*.*(..)) && @annotation(systemLogs)"))
-    public void doAfterAdvice(JoinPoint joinPoint, SystemLogs systemLogs) {
-        String module = systemLogs.module();
-        String operation = systemLogs.operation();
-        addSystemLog(module, operation);
-    }
+  /**
+   * <p>Discription:[后置通知，扫描com.xiaojukeji包及此包下的所有带有SystemLogAnnotation注解的方法]</p>
+   *
+   * @param joinPoint 前置参数
+   */
+  @After(("execution(* com.github..*.*(..)) && @annotation(systemLogs)"))
+  public void doAfterAdvice(JoinPoint joinPoint, SystemLogs systemLogs) {
+    String module = systemLogs.module();
+    String operation = systemLogs.operation();
+    addSystemLog(module, operation);
+  }
 
-    /**
-     * <p>Discription:[保存操作日志]</p>
-     * Created on 2017年11月20日 下午3:07:33
-     *
-     * @param operationContent 操作内容
-     * @author:[全冉]
-     */
-    public void addSystemLog(String operationModule, String operationContent) {
+  /**
+   * <p>Discription:[保存操作日志]</p>
+   * Created on 2017年11月20日 下午3:07:33
+   *
+   * @param operationContent 操作内容
+   * @author:[全冉]
+   */
+  public void addSystemLog(String operationModule, String operationContent) {
 
 
 //        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
@@ -51,5 +51,5 @@ public class SystemLogsAop {
 //        sysLogs.setModule(operationModule);
 //        sysLogs.setOperation(operationContent);
 //        sysLogsMapper.insert(sysLogs);
-    }
+  }
 }

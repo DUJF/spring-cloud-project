@@ -15,22 +15,22 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class RibbonApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(RibbonApplication.class, args);
-        String line = "============================================";
-        System.out.println(line + "\n http://localhost:" + ServiceInfoUtil.getPort() + "\n" + line);
+  public static void main(String[] args) {
+    SpringApplication.run(RibbonApplication.class, args);
+    String line = "============================================";
+    System.out.println(line + "\n http://localhost:" + ServiceInfoUtil.getPort() + "\n" + line);
 
-    }
+  }
 
-    /**
-     * 注册一个具有容错功能的RestTemplate
-     * LoadBalanced开启负载均衡客户端
-     *
-     * @return
-     */
-    @LoadBalanced
-    @Bean
-    RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
+  /**
+   * 注册一个具有容错功能的RestTemplate
+   * LoadBalanced开启负载均衡客户端
+   *
+   * @return
+   */
+  @LoadBalanced
+  @Bean
+  RestTemplate restTemplate() {
+    return new RestTemplate();
+  }
 }

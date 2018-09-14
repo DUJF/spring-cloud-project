@@ -19,31 +19,30 @@ import java.util.List;
 @EnableSwagger2Doc
 public class ZuulApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ZuulApplication.class, args);
-        String line = "============================================";
-        System.out.println(line + "\n http://localhost:8013 \n" + line);
+  public static void main(String[] args) {
+    SpringApplication.run(ZuulApplication.class, args);
+    String line = "============================================";
+    System.out.println(line + "\n http://localhost:8013 \n" + line);
 
+  }
+
+  @Component
+  @Primary class DocumentationConfig implements SwaggerResourcesProvider {
+    @Override
+    public List<SwaggerResource> get() {
+      List resources = new ArrayList<>();
+      //location   name :api-a 是文档名称 /api-a是添加的路由配置
+      resources.add(swaggerResource("api-a", "/api-a/v2/api-docs", "1.0"));
+      resources.add(swaggerResource("api-b", "/api-b/v2/api-docs", "1.0"));
+      return resources;
     }
 
-    @Component
-    @Primary
-    class DocumentationConfig implements SwaggerResourcesProvider {
-        @Override
-        public List<SwaggerResource> get() {
-            List resources = new ArrayList<>();
-            //location   name :api-a 是文档名称 /api-a是添加的路由配置
-            resources.add(swaggerResource("api-a", "/api-a/v2/api-docs", "1.0"));
-            resources.add(swaggerResource("api-b", "/api-b/v2/api-docs", "1.0"));
-            return resources;
-        }
-
-        private SwaggerResource swaggerResource(String name, String location, String version) {
-            SwaggerResource swaggerResource = new SwaggerResource();
-            swaggerResource.setName(name);
-            swaggerResource.setLocation(location);
-            swaggerResource.setSwaggerVersion(version);
-            return swaggerResource;
-        }
+    private SwaggerResource swaggerResource(String name, String location, String version) {
+      SwaggerResource swaggerResource = new SwaggerResource();
+      swaggerResource.setName(name);
+      swaggerResource.setLocation(location);
+      swaggerResource.setSwaggerVersion(version);
+      return swaggerResource;
     }
+  }
 }

@@ -3,6 +3,7 @@ package com.github.client.controller.message;
 import com.github.client.service.message.MessageSendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,4 +34,12 @@ public class MessageSendController {
   ) {
     messageSenderService.send2(message);
   }
+
+  @PostMapping("hello3")
+  public String send3(
+      @RequestParam(required = false) String message
+  ) {
+    return "hello world" + message;
+  }
+
 }
