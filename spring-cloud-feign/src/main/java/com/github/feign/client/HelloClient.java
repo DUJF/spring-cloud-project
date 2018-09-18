@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @date 2018/9/13
  * @since JDK1.8
  */
-@FeignClient("SERVICE-EUREKA-CLIENT")
+@FeignClient(value = "SERVICE-EUREKA-CLIENT", fallback = HelloClientHystrix.class)
 public interface HelloClient {
 
   @RequestMapping(value = "/hello/name", method = RequestMethod.GET, consumes = { "application/json;charset=UTF-8" })
