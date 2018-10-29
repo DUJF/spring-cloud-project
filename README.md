@@ -183,7 +183,7 @@ public interface UserClient {
 feign上传文件，需要添加文件编码的相关配置
 maven 依赖：
 ```xml
-				<dependency>
+	<dependency>
             <groupId>io.github.openfeign.form</groupId>
             <artifactId>feign-form</artifactId>
             <version>3.0.3</version>
@@ -212,8 +212,11 @@ maven 依赖：
 ```
 >@PostMapping(value = "/user/file", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
    String upload(@RequestPart("file") MultipartFile file);
+
 >目前参数必须使用@RequestPart注解，并且key为"file"
+
 >要配置传送类型为：MULTIPART_FORM_DATA_VALUE
+
 >@Configuration 用@Config配置为全局，在@FeignClient(value = "SERVICE-EUREKA-CLIENT", configuration = UserClient.MultipartSupportConfig.class, fallback = UserClientHystrix.class)中配置，仅限本类使用
 
 kotlin文档：https://www.jianshu.com/p/c8dc5ea7f10f
