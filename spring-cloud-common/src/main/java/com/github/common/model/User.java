@@ -1,6 +1,10 @@
 package com.github.common.model;
 
+/**
+ * @author dujf
+ */
 public class User {
+
   private Integer id;
   private String username;
   private String password;

@@ -1,9 +1,9 @@
-package com.github.feign.controller;
+package com.github.client.controller.user;
 
+import com.github.client.service.user.UserService;
 import com.github.common.model.User;
-import com.github.feign.client.MessageSendClient;
-import com.github.feign.client.UserClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,43 +15,39 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author <a href="http://github.com/athc">dujf</a>
- * @date 2018/9/13
+ * @date 2018/9/14
  * @since JDK1.8
  */
+
 @RestController
-@RequestMapping("/feign/message")
-public class MessageController {
+@RequestMapping("/user")
+public class UserController {
 
   @Autowired
-  private MessageSendClient messageSendClient;
-
-  @Autowired
-  private UserClient userClient;
-
-  @GetMapping
-  public String showMessage() {
-    return messageSendClient.send3("message");
-  }
-
+  private UserService userService;
 
   @PostMapping
   public User createUser(@RequestBody User user) {
-    return userClient.postUser(user);
+    return userService.createUser(user);
   }
 
   @GetMapping("{id}")
   public User getId(@PathVariable int id) {
-    return userClient.getUser(id);
+    User user = new User();
+    user.setId(id);
+    return userService.createUser(user);
   }
 
   @PutMapping("{id}")
   public User putUser(@PathVariable int id, @RequestBody User user) {
-    return userClient.putUser(id,user);
+    user.setId(id);
+    return userService.createUser(user);
   }
 
   @DeleteMapping("{id}")
   public User deleteUser(@PathVariable int id) {
-    return userClient.deleteUser(id);
+    User user = new User();
+    user.setId(id);
+    return userService.createUser(user);
   }
-
 }
