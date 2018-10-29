@@ -2,6 +2,8 @@ package com.github.client.controller.user;
 
 import com.github.client.service.user.UserService;
 import com.github.common.model.User;
+import java.io.File;
+import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author <a href="http://github.com/athc">dujf</a>
@@ -49,5 +53,15 @@ public class UserController {
     User user = new User();
     user.setId(id);
     return userService.createUser(user);
+  }
+
+  @PostMapping("file")
+  public String upload(@RequestParam("file") MultipartFile file) {
+    try {
+      file.transferTo(new File("/Users/dujf/Downloads/diamonds.txt"));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return file.getOriginalFilename();
   }
 }
