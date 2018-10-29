@@ -279,16 +279,22 @@ mvn 添加构建依赖
 ![image.png](https://upload-images.jianshu.io/upload_images/11748913-a454b44f26cdee47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 运行镜像 `docker run  imageName:tag` 
 ![image.png](https://upload-images.jianshu.io/upload_images/11748913-5c401121fed6f3f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 推送到docker hub:
+
 登录docker hub账号
 `docker login --username=你的docker hub账号  registry.hub.docker.com`
 输入密码登录后将镜像push到docker hub
 
 ----
 `docker push athzcc/spring-cloud-eureka:1.0.0`
+
 `docker ps -a`查看全部contain(运行和未运行)
+
 `docker rm containId` 移除容器
+
 `docker rmi imagesName`移除镜像
+
 `docker run -it -p8010:8010 athzcc/spring-cloud-eureka:1.0.0` 指定端口号运行镜像
 
 
