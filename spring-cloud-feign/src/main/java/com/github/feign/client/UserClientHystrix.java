@@ -2,6 +2,7 @@ package com.github.feign.client;
 
 import com.github.common.model.User;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author <a href="http://github.com/athc">dujf</a>
@@ -26,6 +27,10 @@ public class UserClientHystrix implements UserClient {
 
   @Override public User deleteUser(int id) {
     return getUser();
+  }
+
+  @Override public String upload(MultipartFile file) {
+    return "error upload file";
   }
 
   private User getUser() {
