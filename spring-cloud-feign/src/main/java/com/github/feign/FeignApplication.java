@@ -11,7 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * @author dujf
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.github")
 @EnableDiscoveryClient
 @EnableFeignClients
 @EnableSwagger2
