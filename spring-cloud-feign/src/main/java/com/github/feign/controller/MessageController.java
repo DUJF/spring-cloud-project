@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author <a href="http://github.com/athc">dujf</a>
@@ -46,12 +48,17 @@ public class MessageController {
 
   @PutMapping("{id}")
   public User putUser(@PathVariable int id, @RequestBody User user) {
-    return userClient.putUser(id,user);
+    return userClient.putUser(id, user);
   }
 
   @DeleteMapping("{id}")
   public User deleteUser(@PathVariable int id) {
     return userClient.deleteUser(id);
+  }
+
+  @PostMapping("file")
+  public String upload(@RequestParam("file") MultipartFile file) {
+    return userClient.upload(file);
   }
 
 }
