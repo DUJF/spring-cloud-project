@@ -1,6 +1,7 @@
 package com.github.ribbon;
 
 import com.github.ribbon.config.ServiceInfoUtil;
+import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -12,7 +13,8 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 //开启断路器功能，进行容错管理
 @EnableCircuitBreaker
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.github")
+@EnableSwagger2Doc
 public class RibbonApplication {
 
   public static void main(String[] args) {

@@ -22,8 +22,9 @@ public class MyFilter extends ZuulFilter {
   private Logger log = LoggerFactory.getLogger(MyFilter.class);
 
 
-  @Autowired
-  private FilterConfig filterConfig;
+  private final FilterConfig filterConfig;
+
+  @Autowired public MyFilter(FilterConfig filterConfig) {this.filterConfig = filterConfig;}
 
   /**
    * filterType：返回一个字符串代表过滤器的类型，在zuul中定义了四种不同生命周期的过滤器类型，具体如下：
