@@ -66,6 +66,14 @@
             <classifier>jdk15</classifier><!--指定jdk版本-->
         </dependency>
 
+        <!--mybatis plus-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.0.5</version>
+        </dependency>
+
+
         <!--mongodb -->
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
