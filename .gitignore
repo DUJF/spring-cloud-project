@@ -23,3 +23,7 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+/spring-cloud-feign/mvnw.cmd
+/spring-cloud-feign/mvnw
+/spring-cloud-sleuth/spring-cloud-zipkin/mvnw.cmd
+/spring-cloud-sleuth/spring-cloud-zipkin/mvnw

@@ -1,7 +1,5 @@
 package com.github.zuul.handler;
 
-import com.github.common.core.RespBody;
-import com.github.common.util.JwtUtils;
 import com.github.zuul.config.FilterConfig;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
