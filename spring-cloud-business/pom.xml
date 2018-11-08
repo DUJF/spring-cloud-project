@@ -35,8 +35,8 @@
 
     <modules>
         <module>business-auth</module>
-        <module>spring-cloud-eureka-client</module>
-        <module>spring-cloud-eureka-client2</module>
+        <module>business-client</module>
+        <module>business-client2</module>
     </modules>
 
 </project>
