@@ -1,8 +1,8 @@
 package com.github.feign.controller;
 
-import com.github.common.model.User;
 import com.github.feign.client.MessageSendClient;
 import com.github.feign.client.UserClient;
+import com.github.model.po.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,23 +37,23 @@ public class MessageController {
 
 
   @PostMapping
-  public User createUser(@RequestBody User user) {
-    return userClient.postUser(user);
+  public UserInfo createUser(@RequestBody UserInfo user) {
+    return userClient.postUserInfo(user);
   }
 
   @GetMapping("{id}")
-  public User getId(@PathVariable int id) {
-    return userClient.getUser(id);
+  public UserInfo getId(@PathVariable int id) {
+    return userClient.getUserInfo(id);
   }
 
   @PutMapping("{id}")
-  public User putUser(@PathVariable int id, @RequestBody User user) {
-    return userClient.putUser(id, user);
+  public UserInfo putUser(@PathVariable int id, @RequestBody UserInfo user) {
+    return userClient.putUserInfo(id, user);
   }
 
   @DeleteMapping("{id}")
-  public User deleteUser(@PathVariable int id) {
-    return userClient.deleteUser(id);
+  public UserInfo deleteUser(@PathVariable int id) {
+    return userClient.deleteUserInfo(id);
   }
 
   @PostMapping("file")

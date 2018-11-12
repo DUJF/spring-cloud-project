@@ -1,6 +1,5 @@
 package com.github.ribbon;
 
-import com.github.ribbon.config.ServiceInfoUtil;
 import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,8 +19,6 @@ public class RibbonApplication {
   public static void main(String[] args) {
     SpringApplication.run(RibbonApplication.class, args);
     String line = "============================================";
-    System.out.println(line + "\n http://localhost:" + ServiceInfoUtil.getPort() + "\n" + line);
-
   }
 
   /**

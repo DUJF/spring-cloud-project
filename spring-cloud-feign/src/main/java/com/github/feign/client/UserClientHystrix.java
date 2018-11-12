@@ -1,6 +1,6 @@
 package com.github.feign.client;
 
-import com.github.common.model.User;
+import com.github.model.po.UserInfo;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,31 +13,31 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserClientHystrix implements UserClient {
 
 
-  @Override public User postUser(User user) {
-    return getUser();
+  @Override public UserInfo postUserInfo(UserInfo userInfo) {
+    return null;
   }
 
-  @Override public User getUser(int id) {
-    return getUser();
+  @Override public UserInfo getUserInfo(int id) {
+    return getUserInfo();
   }
 
-  @Override public User putUser(int id, User user) {
-    return getUser();
+  @Override public UserInfo putUserInfo(int id, UserInfo userInfo) {
+    return getUserInfo();
   }
 
-  @Override public User deleteUser(int id) {
-    return getUser();
+  @Override public UserInfo deleteUserInfo(int id) {
+    return getUserInfo();
   }
 
   @Override public String upload(MultipartFile file) {
     return "error upload file";
   }
 
-  private User getUser() {
-    User user = new User();
-    user.setId(100);
-    user.setUsername("zhangsan");
-    user.setPassword("zhangsan");
-    return user;
+  private UserInfo getUserInfo() {
+    UserInfo userInfo = new UserInfo();
+    userInfo.setId(100);
+    userInfo.setAccount("zhangsan");
+    userInfo.setPassword("zhangsan");
+    return userInfo;
   }
 }

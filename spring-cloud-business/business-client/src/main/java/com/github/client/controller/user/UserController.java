@@ -1,11 +1,10 @@
 package com.github.client.controller.user;
 
-import com.github.client.service.user.UserService;
-import com.github.common.model.User;
+import com.github.model.po.UserInfo;
+import com.github.service.UserInfoServiceImpl;
 import java.io.File;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,31 +27,30 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserController {
 
   @Autowired
-  private UserService userService;
+  private UserInfoServiceImpl userService;
 
   @PostMapping
-  public User createUser(@RequestBody User user) {
-    return userService.createUser(user);
+  public UserInfo createUser(@RequestBody UserInfo user) {
+    userService.save(user);
+    return user;
   }
 
   @GetMapping("{id}")
-  public User getId(@PathVariable int id) {
-    User user = new User();
-    user.setId(id);
-    return userService.createUser(user);
+  public UserInfo getId(@PathVariable int id) {
+    return userService.getById(id);
   }
 
   @PutMapping("{id}")
-  public User putUser(@PathVariable int id, @RequestBody User user) {
+  public UserInfo putUser(@PathVariable int id, @RequestBody UserInfo user) {
     user.setId(id);
-    return userService.createUser(user);
+    userService.updateById(user);
+    return user;
   }
 
   @DeleteMapping("{id}")
-  public User deleteUser(@PathVariable int id) {
-    User user = new User();
-    user.setId(id);
-    return userService.createUser(user);
+  public UserInfo deleteUser(@PathVariable int id) {
+    userService.removeById(id);
+    return userService.getById(id);
   }
 
   @PostMapping("file")

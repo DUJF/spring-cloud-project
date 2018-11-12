@@ -1,11 +1,11 @@
 package com.github.client2.controller;
 
 import com.github.client2.config.JwtConfig;
-import com.github.common.core.RespBody;
-import com.github.common.util.EncryptionHelper;
-import com.github.common.util.JwtUtils;
 import com.github.client2.util.RedisUtils;
-import com.github.common.util.ResultUtils;
+import com.github.core.RespBody;
+import com.github.core.utils.EncryptionHelper;
+import com.github.core.utils.JwtUtils;
+import com.github.core.utils.ResultUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;

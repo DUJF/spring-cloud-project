@@ -27,7 +27,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -86,7 +85,7 @@
         </dependency>
         <dependency>
             <groupId>com.github</groupId>
-            <artifactId>spring-cloud-common</artifactId>
+            <artifactId>common-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

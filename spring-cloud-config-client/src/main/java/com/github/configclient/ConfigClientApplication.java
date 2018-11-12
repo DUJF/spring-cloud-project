@@ -1,6 +1,5 @@
 package com.github.configclient;
 
-import com.github.configclient.config.ServiceInfoUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +15,6 @@ public class ConfigClientApplication {
   public static void main(String[] args) {
     SpringApplication.run(ConfigClientApplication.class, args);
     String line = "============================================";
-    System.out.println(line + "\n http://localhost:" + ServiceInfoUtil.getPort() + " \n" + line);
   }
 
   @Value("${name}")

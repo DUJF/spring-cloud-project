@@ -7,7 +7,6 @@
     <groupId>com.github</groupId>
     <artifactId>common-model</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
 
     <name>model</name>
     <description>common-model</description>
@@ -26,9 +25,6 @@
             <version>${swagger.starter.version}</version>
         </dependency>
         <!--swagger2-->
-
-
-
         <dependency>
             <groupId>com.github</groupId>
             <artifactId>common-core</artifactId>

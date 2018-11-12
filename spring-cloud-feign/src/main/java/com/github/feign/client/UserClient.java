@@ -1,11 +1,10 @@
 package com.github.feign.client;
 
-import com.github.common.model.User;
+import com.github.model.po.UserInfo;
 import feign.codec.Encoder;
 import feign.form.spring.SpringFormEncoder;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,22 +23,22 @@ import org.springframework.web.multipart.MultipartFile;
 @FeignClient(value = "SERVICE-EUREKA-CLIENT", configuration = UserClient.MultipartSupportConfig.class, fallback = UserClientHystrix.class)
 public interface UserClient {
 
-  @PostMapping(value = "/user", consumes = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-  User postUser(@RequestBody User user);
+  @PostMapping(value = "/UserInfo", consumes = { MediaType.APPLICATION_JSON_UTF8_VALUE })
+  UserInfo postUserInfo(@RequestBody UserInfo userInfo);
 
-  @GetMapping(value = "/user/{id}", consumes = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-  User getUser(@PathVariable("id") int id);
+  @GetMapping(value = "/UserInfo/{id}", consumes = { MediaType.APPLICATION_JSON_UTF8_VALUE })
+  UserInfo getUserInfo(@PathVariable("id") int id);
 
-  @PutMapping(value = "/user/{id}", consumes = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-  User putUser(@PathVariable("id") int id, @RequestBody User user);
+  @PutMapping(value = "/UserInfo/{id}", consumes = { MediaType.APPLICATION_JSON_UTF8_VALUE })
+  UserInfo putUserInfo(@PathVariable("id") int id, @RequestBody UserInfo userInfo);
 
-  @DeleteMapping(value = "/user/{id}", consumes = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-  User deleteUser(@PathVariable("id") int id);
+  @DeleteMapping(value = "/UserInfo/{id}", consumes = { MediaType.APPLICATION_JSON_UTF8_VALUE })
+  UserInfo deleteUserInfo(@PathVariable("id") int id);
 
-  @PostMapping(value = "/user/file", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+  @PostMapping(value = "/UserInfo/file", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
   String upload(@RequestPart("file") MultipartFile file);
 
-//  @Configuration
+  //  @Configuration
   class MultipartSupportConfig {
 
     @Bean

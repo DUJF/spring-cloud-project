@@ -1,8 +1,8 @@
 package com.github.core.utils;
 
 
-import com.github.common.core.HttpStatusEnum;
-import com.github.common.core.RespBody;
+import com.github.core.RespBody;
+import com.github.core.enums.HttpStatusEnum;
 
 /**
  * @author dellll
