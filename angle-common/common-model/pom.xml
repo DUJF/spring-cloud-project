@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github</groupId>
+    <artifactId>common-model</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>model</name>
+    <description>common-model</description>
+
+    <parent>
+        <groupId>com.github</groupId>
+        <artifactId>angle-common</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!--swagger2-->
+        <dependency>
+            <groupId>com.spring4all</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
+            <version>${swagger.starter.version}</version>
+        </dependency>
+        <!--swagger2-->
+        <dependency>
+            <groupId>com.github</groupId>
+            <artifactId>common-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+</project>
