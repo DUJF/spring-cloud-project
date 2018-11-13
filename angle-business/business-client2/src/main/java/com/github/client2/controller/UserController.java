@@ -1,12 +1,12 @@
 package com.github.client2.controller;
 
 import com.github.client2.config.JwtConfig;
-import com.github.client2.service.*;
 import com.github.client2.util.RedisUtils;
 import com.github.core.RespBody;
 import com.github.core.utils.EncryptionHelper;
 import com.github.core.utils.JwtUtils;
 import com.github.core.utils.ResultUtils;
+import com.github.service.UserInfoServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class UserController {
   private JwtConfig jwtConfig;
 
   @Autowired
-  private UserService userservice;
+  private UserInfoServiceImpl userservice;
 
 
   /**
@@ -77,7 +77,7 @@ public class UserController {
 
   @RequestMapping(value = "/hello", method = RequestMethod.POST)
   public RespBody getHello() {
-    return ResultUtils.success(userservice.getHello());
+    return ResultUtils.success(userservice.getById(1));
   }
 
   @Autowired

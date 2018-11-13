@@ -24,17 +24,17 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 @Service
 public class LoginServiceImpl implements LoginService {
 
-  @Autowired
-  private TokenEndpoint tokenEndpoint;
+//  @Autowired
+//  private TokenEndpoint tokenEndpoint;
 
   @Autowired
   private UserInfoMapper userInfoMapper;
 
-  @Override
-  public ResponseEntity<OAuth2AccessToken> loginIn(LoginParam loginParam) throws HttpRequestMethodNotSupportedException {
-    UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("client", "", new ArrayList<>());
-    return tokenEndpoint.postAccessToken(token, getParams(loginParam));
-  }
+//  @Override
+//  public ResponseEntity<OAuth2AccessToken> loginIn(LoginParam loginParam) throws HttpRequestMethodNotSupportedException {
+//    UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("client", "", new ArrayList<>());
+//    return tokenEndpoint.postAccessToken(token, getParams(loginParam));
+//  }
 
   @Override public void register(LoginParam loginParam) {
     if (!loginParam.getPassword().isEmpty() && !loginParam.getUsername().isEmpty()) {
