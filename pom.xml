@@ -1,59 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
 
-    <name>spring-cloud-project</name>
+    <name>angle-cloud-project</name>
     <groupId>com.github</groupId>
-    <artifactId>spring-cloud-project</artifactId>
+    <artifactId>angle-cloud-project</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.9.RELEASE</version>
+        <version>2.0.3.RELEASE</version>
     </parent>
 
+    <properties>
+        <mysql.version>8.0.13</mysql.version>
+        <oauth2.version>2.3.3.RELEASE</oauth2.version>
+        <spring.admin.version>1.4.5</spring.admin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <java-jwt.version>3.2.0</java-jwt.version>
+        <swagger.bootstrap.version>1.8.3</swagger.bootstrap.version>
+        <swagger.starter.version>1.7.0.RELEASE</swagger.starter.version>
+        <mybatis-plus.starter.version>3.0.5</mybatis-plus.starter.version>
+        <mybatis-plus.version>2.0.7</mybatis-plus.version>
+        <kaptcha.version>0.0.9</kaptcha.version>
+        <velocity.version>1.7</velocity.version>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <eureka.version>1.4.6.RELEASE</eureka.version>
+        <feign.version>1.4.6.RELEASE</feign.version>
+        <turbine.version>1.4.6.RELEASE</turbine.version>
+        <zuul.version>1.4.6.RELEASE</zuul.version>
+        <hystrix.version>1.4.6.RELEASE</hystrix.version>
+        <ribbon.version>1.4.6.RELEASE</ribbon.version>
+        <hystrix-dashboard.version>1.4.6.RELEASE</hystrix-dashboard.version>
+        <feign-form.version>3.0.3</feign-form.version>
+        <config-server.version>2.0.2.RELEASE</config-server.version>
+        <zipkin.server.version>2.11.8</zipkin.server.version>
+    </properties>
+
     <modules>
-        <module>spring-cloud-eureka</module>
-        <module>spring-cloud-eureka-client</module>
-        <module>spring-cloud-zuul</module>
-        <module>spring-cloud-common</module>
-        <module>spring-cloud-eureka-client2</module>
-        <module>spring-cloud-config</module>
-        <module>spring-cloud-config-client</module>
-        <module>spring-boot-admin</module>
-        <module>spring-cloud-ribbon</module>
-        <module>spring-cloud-consul</module>
-        <module>spring-cloud-feign</module>
-        <module>spring-cloud-zipkin</module>
+        <module>angle-eureka</module>
+        <module>angle-zuul</module>
+        <module>angle-common</module>
+        <module>angle-config</module>
+        <module>angle-config-client</module>
+        <module>angle-admin</module>
+        <module>angle-ribbon</module>
+        <module>angle-consul</module>
+        <module>angle-sleuth</module>
+        <module>angle-bus</module>
+        <module>angle-turbine</module>
+        <module>angle-business</module>
     </modules>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.7</version>
-                <configuration>
-                    <connectors>
-                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                            <port>8888</port>
-                            <maxIdleTime>30000</maxIdleTime>
-                        </connector>
-                    </connectors>
-                    <webAppSourceDirectory>${project.build.directory}/${pom.artifactId}-${pom.version}
-                    </webAppSourceDirectory>
-                    <contextPath>/</contextPath>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-    <dependencies>
-
-    </dependencies>
-
+    <!--management 管理的依赖，子项目添加依赖不用添加版本，默认是根项目的版本-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+                <version>${hystrix-dashboard.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka</artifactId>
+                <version>${eureka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
