@@ -19,10 +19,6 @@
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
         <!-- sping cloud 注册服务 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -50,11 +46,6 @@
             <artifactId>swagger-bootstrap-ui</artifactId>
             <version>${swagger.bootstrap.version}</version>
         </dependency>
-        <!--zipkin-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
-        </dependency>
         <!--sleuth-zipkin-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -75,6 +66,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+
+
     </dependencies>
     <build>
         <plugins>

@@ -16,7 +16,7 @@ public class EurekaApplication {
   public static void main(String[] args) {
     SpringApplication.run(EurekaApplication.class, args);
     String line = "============================================";
-    System.out.println(line + "\n http://localhost:" + port + "\n" + line);
+    System.out.println(new StringBuffer(line).append("\n").append("http://localhost:").append(port).append("\n").append(line));
 
   }
 }

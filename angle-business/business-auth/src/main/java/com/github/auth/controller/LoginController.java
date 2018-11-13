@@ -28,12 +28,12 @@ public class LoginController {
 
   @PostMapping(RequestPath.LOGIN)
   public void loginIn(@RequestBody LoginParam loginParam) {
-    try {
-      ResponseEntity accessToken = loginService.loginIn(loginParam);
-      OAuth2AccessToken token = (DefaultOAuth2AccessToken) accessToken.getBody();
-    } catch (HttpRequestMethodNotSupportedException e) {
-      e.printStackTrace();
-    }
+//    try {
+//      ResponseEntity accessToken = loginService.loginIn(loginParam);
+//      OAuth2AccessToken token = (DefaultOAuth2AccessToken) accessToken.getBody();
+//    } catch (HttpRequestMethodNotSupportedException e) {
+//      e.printStackTrace();
+//    }
   }
 
   @PostMapping(RequestPath.REGISTER)

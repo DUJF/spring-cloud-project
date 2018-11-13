@@ -17,7 +17,7 @@ public interface LoginService {
    * @return
    * @throws HttpRequestMethodNotSupportedException
    */
-  ResponseEntity<OAuth2AccessToken> loginIn(LoginParam loginParam) throws HttpRequestMethodNotSupportedException;
+//  ResponseEntity<OAuth2AccessToken> loginIn(LoginParam loginParam) throws HttpRequestMethodNotSupportedException;
 
   /**
    * @param loginParam
