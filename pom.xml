@@ -49,7 +49,6 @@
         <module>angle-zuul</module>
         <module>angle-common</module>
         <module>angle-config</module>
-        <module>angle-config-client</module>
         <module>angle-admin</module>
         <module>angle-ribbon</module>
         <module>angle-consul</module>
