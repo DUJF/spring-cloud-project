@@ -6,9 +6,9 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
 
-    <name>angle-cloud-project</name>
+    <name>angle-cloud</name>
     <groupId>com.github</groupId>
-    <artifactId>angle-cloud-project</artifactId>
+    <artifactId>angle-cloud</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <parent>

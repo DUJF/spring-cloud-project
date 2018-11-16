@@ -30,7 +30,7 @@
 
     <parent>
         <groupId>com.github</groupId>
-        <artifactId>angle-cloud-project</artifactId>
+        <artifactId>angle-cloud</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
