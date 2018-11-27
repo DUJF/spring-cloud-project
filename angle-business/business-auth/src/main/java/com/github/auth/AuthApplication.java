@@ -3,6 +3,7 @@ package com.github.auth;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -13,6 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableEurekaClient
 @EnableSwagger2
 @MapperScan("com.github")
+@RefreshScope
 @SpringBootApplication(scanBasePackages = "com.github")
 public class AuthApplication {
 
