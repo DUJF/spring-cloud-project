@@ -56,15 +56,9 @@
         <module>angle-bus</module>
         <module>angle-turbine</module>
         <module>angle-business</module>
+        <module>angle-gateway</module>
     </modules>
 
-    <dependencies>
-        <!--迁移使用至2.0.0-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-properties-migrator</artifactId>
-        </dependency>
-    </dependencies>
     <!--management 管理的依赖，子项目添加依赖不用添加版本，默认是根项目的版本-->
     <dependencyManagement>
         <dependencies>
