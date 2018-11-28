@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github</groupId>
-    <artifactId>angle-zuul</artifactId>
+    <artifactId>gateway-zuul</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -14,7 +14,7 @@
 
     <parent>
         <groupId>com.github</groupId>
-        <artifactId>angle-cloud</artifactId>
+        <artifactId>angle-gateway</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
