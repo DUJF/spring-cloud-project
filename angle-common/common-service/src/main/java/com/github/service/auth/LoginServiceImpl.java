@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.security.oauth2.common.OAuth2AccessToken;
+//import org.springframework.http.ResponseEntity;
+//import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+//import org.springframework.security.crypto.bcrypt.BCrypt;
+//import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.stereotype.Service;
-import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
+//import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;
+//import org.springframework.web.HttpRequestMethodNotSupportedException;
 
 /**
  * @author <a href="http://github.com/athc">dujf</a>
@@ -40,7 +40,7 @@ public class LoginServiceImpl implements LoginService {
     if (!loginParam.getPassword().isEmpty() && !loginParam.getUsername().isEmpty()) {
       UserInfo userInfo = new UserInfo();
       userInfo.setAccount(loginParam.getUsername());
-      userInfo.setPassword(BCrypt.hashpw(loginParam.getPassword(), BCrypt.gensalt()));
+//      userInfo.setPassword(BCrypt.hashpw(loginParam.getPassword(), BCrypt.gensalt()));
       userInfoMapper.insert(userInfo);
     } else {
       throw new RuntimeException();
