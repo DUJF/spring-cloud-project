@@ -1,6 +1,6 @@
 package com.github.client2.component;
 
-import com.github.client2.constant.QueueConstant;
+import com.github.client2.constant.RabbitMqConstant;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class Receiver {
 
   @RabbitHandler
-  @RabbitListener(queues = QueueConstant.USER_MESSAGE)
+  @RabbitListener(queues = RabbitMqConstant.QUEUE_USER_MESSAGE)
   public void processHello(String message) {
     System.out.println("接收者 helloReceiver," + message);
   }

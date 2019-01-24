@@ -1,7 +1,7 @@
 package com.github.client2.component;
 
 import com.alibaba.fastjson.JSON;
-import com.github.client2.constant.QueueConstant;
+import com.github.client2.constant.RabbitMqConstant;
 import com.github.model.po.Message;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +23,10 @@ public class Publisher {
   }
 
   public void sendStringMessage(String message) {
-    rabbitTemplate.convertAndSend(QueueConstant.USER_MESSAGE, JSON.toJSONString(message));
+    rabbitTemplate.convertAndSend(RabbitMqConstant.QUEUE_USER_MESSAGE, JSON.toJSONString(message));
   }
 
   public void sendMessage(Message message) {
-    rabbitTemplate.convertAndSend(QueueConstant.USER_MESSAGE, JSON.toJSONString(message));
+    rabbitTemplate.convertAndSend(RabbitMqConstant.QUEUE_USER_MESSAGE, JSON.toJSONString(message));
   }
 }

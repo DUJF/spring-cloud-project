@@ -5,6 +5,9 @@ package com.github.client2.constant;
  * @date 2019-01-24
  * @since JDK1.8
  */
-public interface QueueConstant {
-  static final String USER_MESSAGE = "user-message";
+public interface RabbitMqConstant {
+
+  String QUEUE_USER_MESSAGE = "user-message";
+
+  String EXCHANGE_USER = "exchange-user";
 }
