@@ -1,9 +1,6 @@
 package com.github.service.auth;
 
 import com.github.model.params.LoginParam;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
 
 /**
  * @author <a href="http://github.com/athc">dujf</a>

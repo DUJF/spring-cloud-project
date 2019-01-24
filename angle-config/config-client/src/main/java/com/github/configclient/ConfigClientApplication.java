@@ -23,7 +23,7 @@ public class ConfigClientApplication {
     System.out.println(new StringBuffer(line).append("\n http://localhost:8015 \n").append(line));
   }
 
-  @Value("${name}")
+//  @Value("${name}")
   private String name;
 
   @GetMapping("/name")

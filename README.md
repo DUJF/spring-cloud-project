@@ -1,5 +1,12 @@
 # angle-cloud-project
  spring cloud项目实践
+ 
+ 目录结构说明:
+ 
+ 
+ 
+ 
+ 
 ### 1. 首先建立一个服务注册中心 [服务注册中心](https://github.com/DUJF/angle-cloud-project/tree/master/angle-eureka)
 ### 2. 创建多个服务提供者（本实例中的client，client2)
 服务资源微服务[clinet](https://github.com/DUJF/angle-cloud-project/tree/master/angle-config-client)

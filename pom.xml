@@ -46,7 +46,6 @@
 
     <modules>
         <module>angle-eureka</module>
-        <module>angle-zuul</module>
         <module>angle-common</module>
         <module>angle-config</module>
         <module>angle-admin</module>
