@@ -304,5 +304,6 @@ mvn 添加构建依赖
 
 `docker run -it -p8010:8010 athzcc/spring-cloud-eureka:1.0.0` 指定端口号运行镜像
 
+### 9.rabbitmq 的简单使用
 
 未完待续......
