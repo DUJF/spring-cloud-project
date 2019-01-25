@@ -15,8 +15,25 @@ public class Receiver {
 
   @RabbitHandler
   @RabbitListener(queues = RabbitMqConstant.QUEUE_USER_MESSAGE)
-  public void processHello(String message) {
-    System.out.println("接收者 helloReceiver," + message);
+  public void processMessage(String message) {
+    System.out.println("接收者 QUEUE_USER_MESSAGE : " + message);
   }
 
+  @RabbitHandler
+  @RabbitListener(queues = RabbitMqConstant.QUEUE_USER_MESSAGES)
+  public void processUserRole(String message) {
+    System.out.println("接收者 QUEUE_USER_MESSAGES : " + message);
+  }
+
+  @RabbitHandler
+  @RabbitListener(queues = RabbitMqConstant.QUEUE_DIRECT_MESSAGE)
+  public void processPermission(String message) {
+    System.out.println("接收者 QUEUE_DIRECT_MESSAGE : " + message);
+  }
+
+  @RabbitHandler
+  @RabbitListener(queues = RabbitMqConstant.QUEUE_DIRECT_MESSAGES)
+  public void processDirectPermission(String message) {
+    System.out.println("接收者 QUEUE_DIRECT_MESSAGES : " + message);
+  }
 }

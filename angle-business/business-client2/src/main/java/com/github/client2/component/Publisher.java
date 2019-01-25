@@ -22,11 +22,33 @@ public class Publisher {
     this.rabbitTemplate = rabbitTemplate;
   }
 
-  public void sendStringMessage(String message) {
+  /**
+   * 发送消息到对列
+   *
+   * @param message
+   */
+  public void sendQueueMessage(String message) {
     rabbitTemplate.convertAndSend(RabbitMqConstant.QUEUE_USER_MESSAGE, JSON.toJSONString(message));
   }
 
-  public void sendMessage(Message message) {
-    rabbitTemplate.convertAndSend(RabbitMqConstant.QUEUE_USER_MESSAGE, JSON.toJSONString(message));
+  /**
+   * 发送消息到交换记
+   *
+   * @param message
+   */
+  public void sendStringMessage(String message) {
+    rabbitTemplate.convertAndSend(RabbitMqConstant.EXCHANGE_TOPIC, RabbitMqConstant.ROUTING_USER_MESSAGE, JSON.toJSONString(message));
+  }
+
+  public void sendStringMessages(String message) {
+    rabbitTemplate.convertAndSend(RabbitMqConstant.EXCHANGE_TOPIC, RabbitMqConstant.ROUTING_USER_MESSAGES, JSON.toJSONString(message));
+  }
+
+  public void sendDirectMessage(Message message) {
+    rabbitTemplate.convertAndSend(RabbitMqConstant.EXCHANGE_TOPIC, RabbitMqConstant.ROUTING_DIRECT_MESSAGE, JSON.toJSONString(message));
+  }
+
+  public void sendDirectMessages(Message message) {
+    rabbitTemplate.convertAndSend(RabbitMqConstant.EXCHANGE_DIRECT, RabbitMqConstant.ROUTING_DIRECT_MESSAGES, JSON.toJSONString(message));
   }
 }

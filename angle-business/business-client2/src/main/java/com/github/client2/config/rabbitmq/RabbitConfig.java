@@ -16,14 +16,25 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class RabbitConfig {
+
   @Bean
   public Queue userMessage() {
     return new Queue(RabbitMqConstant.QUEUE_USER_MESSAGE);
   }
 
   @Bean
+  public Queue userMessages() {
+    return new Queue(RabbitMqConstant.QUEUE_USER_MESSAGES);
+  }
+
+  @Bean
   public Queue directQueue() {
     return new Queue(RabbitMqConstant.QUEUE_DIRECT_MESSAGE);
+  }
+
+  @Bean
+  public Queue directQueues() {
+    return new Queue(RabbitMqConstant.QUEUE_DIRECT_MESSAGES);
   }
 
   @Bean
@@ -41,13 +52,21 @@ public class RabbitConfig {
 
   @Bean
   Binding bindingExchangeDirectQueue(Queue directQueue, DirectExchange directExchange) {
-    return BindingBuilder.bind(directQueue).to(directExchange).with("direct.#");
+    return BindingBuilder.bind(directQueue).to(directExchange).with(RabbitMqConstant.ROUTING_DIRECT_MESSAGE);
   }
 
   @Bean
-  Binding bindingTopicExchangeQueue(Queue directQueue, TopicExchange topicExchange) {
-    return BindingBuilder.bind(directQueue).to(topicExchange).with("topic.#");
+  Binding bindingExchangeDirectQueue2(Queue directQueues, DirectExchange directExchange) {
+    return BindingBuilder.bind(directQueues).to(directExchange).with(RabbitMqConstant.ROUTING_DIRECT_MESSAGES);
   }
 
+  @Bean
+  Binding bindingTopicExchangeQueue2(Queue userMessage, TopicExchange topicExchange) {
+    return BindingBuilder.bind(userMessage).to(topicExchange).with(RabbitMqConstant.ROUTING_USER_MESSAGE);
+  }
 
+  @Bean
+  Binding bindingTopicExchangeQueue(Queue userMessages, TopicExchange topicExchange) {
+    return BindingBuilder.bind(userMessages).to(topicExchange).with(RabbitMqConstant.ROUTING_USER_MESSAGES);
+  }
 }
