@@ -7,7 +7,9 @@ package com.github.client2.constant;
  */
 public interface RabbitMqConstant {
 
-  String QUEUE_USER_MESSAGE = "user-message";
+  String QUEUE_USER_MESSAGE = "user.message";
+  String QUEUE_DIRECT_MESSAGE = "direct";
 
-  String EXCHANGE_USER = "exchange-user";
+  String EXCHANGE_TOPIC = "topic.exchange";
+  String EXCHANGE_DIRECT = "direct.exchange";
 }

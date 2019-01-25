@@ -16,29 +16,38 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class RabbitConfig {
-
-//  @Bean
-//  public Queue helloQueue() {
-//    return new Queue("hello");
-//  }
-
   @Bean
   public Queue userMessage() {
     return new Queue(RabbitMqConstant.QUEUE_USER_MESSAGE);
   }
 
-//  @Bean
-//  public Queue directQueue() {
-//    return new Queue("direct");
-//  }
+  @Bean
+  public Queue directQueue() {
+    return new Queue(RabbitMqConstant.QUEUE_DIRECT_MESSAGE);
+  }
 
-//  @Bean
-//  DirectExchange directExchange() {
-//    return new DirectExchange(RabbitMqConstant.EXCHANGE_USER);
-//  }
-//
-//  @Bean
-//  Binding bindingExchangeDirectQueue(Queue directQueue, DirectExchange directExchange) {
-//    return BindingBuilder.bind(directQueue).to(directExchange).with("direct");
-//  }
+  @Bean
+  DirectExchange directExchange() {
+    return new DirectExchange(RabbitMqConstant.EXCHANGE_DIRECT);
+  }
+
+  /**
+   * 交换机(Exchange) 描述：接收消息并且转发到绑定的队列，交换机不存储消息
+   */
+  @Bean
+  TopicExchange topicExchange() {
+    return new TopicExchange(RabbitMqConstant.EXCHANGE_TOPIC);
+  }
+
+  @Bean
+  Binding bindingExchangeDirectQueue(Queue directQueue, DirectExchange directExchange) {
+    return BindingBuilder.bind(directQueue).to(directExchange).with("direct.#");
+  }
+
+  @Bean
+  Binding bindingTopicExchangeQueue(Queue directQueue, TopicExchange topicExchange) {
+    return BindingBuilder.bind(directQueue).to(topicExchange).with("topic.#");
+  }
+
+
 }
